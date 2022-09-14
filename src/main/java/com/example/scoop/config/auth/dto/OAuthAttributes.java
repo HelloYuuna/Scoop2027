@@ -14,7 +14,7 @@ public class OAuthAttributes {
 	   private String nameAttributeKey;
 	   private String name;
 	   private String email;
-	   private String picture;
+//	   private String picture;
 
 	   @Builder
 	   public OAuthAttributes(Map<String, Object> attributes,
@@ -24,7 +24,7 @@ public class OAuthAttributes {
 	       this.nameAttributeKey= nameAttributeKey;
 	       this.name = name;
 	       this.email = email;
-	       this.picture = picture;
+//	       this.picture = picture;
 	   }
 
 	   public static OAuthAttributes of(String registrationId,
@@ -48,7 +48,7 @@ public class OAuthAttributes {
 	       return User.builder()
 	               .name(name)
 	               .email(email)
-	               .picture(picture)
+//	               .picture(picture)
 	               .role(Role.GUEST)
 	               .build();
 	   }
