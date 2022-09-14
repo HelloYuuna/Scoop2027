@@ -11,19 +11,16 @@ import javax.persistence.*;
 @Entity
 @Table(name="SCOOP_USER")
 public class User {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
-	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ", allocationSize=1)
-	private Long id;
-	
 	@Column(nullable = false)
-	private String name;
-	
+	private String email;				// 회원 아이디 이메일
+
 	@Column(nullable = false)
-	private String email;
+	private String name;				// 회원 이름
 	
-	@Column
-	private String picture;
+//	@Column
+//	private String picture;				// 구글일 경우 프로필 사진
 	
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)

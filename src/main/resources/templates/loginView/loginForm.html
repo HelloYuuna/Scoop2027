@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko" xmls:th:="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>google test</title>
-		<meta charset="UTF-8" />
-		<link rel="stylesheet" href="login.css" />
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/css/login.css}">
 	</head>
 	<body>
 		<div class="content">
@@ -11,35 +11,19 @@
 			<div class="container">
 				<div id="login-info">
 					<h2>로그인</h2>
-					<form
-						th:object="${member}"
-						th:action="@{/member/join}"
-						method="post"
-						onsubmit="return check();"
-					>
+					<form th:action="@{/login}" method="post">
 						<div class="userid">
 							<label>
-								<input
-									type="email"
-									th:field="*{memberid}"
-									placeholder="아이디 이메일"
-									required="required"
-								/>
+								<input type="email" name="memberid" placeholder="이메일" required="required">
 							</label>
 						</div>
 						<div class="userpw">
 							<label>
-								<input
-									type="password"
-									th:field="*{memberpw}"
-									placeholder="비밀번호"
-									maxlength="10"
-									required="required"
-								/>
+								<input type="password" name="memberpw" placeholder="비밀번호" maxlength="10" required="required">
 							</label>
 						</div>
 						<div class="btn_submit">
-							<input type="submit" value="sign in" />
+							<input type="submit" value="sign in">
 						</div>
 					</form>
 					<div class="sign-with-another">

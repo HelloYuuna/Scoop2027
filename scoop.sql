@@ -1,6 +1,8 @@
+Drop table scoop_user;
+Drop SEQUENCE id_seq;
+
 CREATE TABLE scoop_user
 (
-    id      VARCHAR2(1000),
     name    VARCHAR2(1000) NOT NULL,
     email   VARCHAR2(1000) NOT NULL,
     picture VARCHAR2(1000),
