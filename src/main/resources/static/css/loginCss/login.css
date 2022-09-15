@@ -1,5 +1,7 @@
+
 body {
 	background: aliceblue;
+	font-family: Georgia, sans-serif;
 }
 
 div.content {
@@ -13,7 +15,6 @@ div.left-image {
 	display: flex;
 	width: 300px;
 	height: 480px;
-	/* float: left; */
 	background-image: url("https://images.unsplash.com/photo-1455218873509-8097305ee378?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
 	background-repeat: no-repeat;
 	opacity: 0.7; 
@@ -25,7 +26,6 @@ div.container {
 	justify-content: center;
 	width: 400px;
 	height: 450px;
-	/* float: left; */
 	padding-top: 30px;
 	background: white;
 	box-shadow: 1px 2px 30px 1px #dbdbdb;
@@ -42,9 +42,9 @@ h2 {
 
 }
 
-input#btn_idChk {
-	margin-left: 10px;
-}
+/*input#btn_idChk {*/
+/*	margin-left: 10px;*/
+/*}*/
 
 div.sign-with-another {
 	margin: 20px 0;
@@ -60,16 +60,6 @@ input[type=email] {
 	padding-left: 10px;
 }
 
-input#memberid,
-input#memberpw {
-	margin-left: 40px;
-}
-
-/* 에러 표현 */
-.invaild {
-	border-color: #0077b6;
-}
-
 div.btn_submit {
 	margin: 30px 0;
 }
@@ -81,6 +71,7 @@ input[type=submit] {
 	padding: 10px 10px;
 	background: #354f52;
 	color: #fff;
+	font-weight: 600;
 }
 
 input[type=submit]:hover {
