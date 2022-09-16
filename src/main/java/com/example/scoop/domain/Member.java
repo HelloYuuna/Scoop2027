@@ -4,9 +4,7 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Data
@@ -21,10 +19,20 @@ public class Member implements UserDetails {
     @Column (nullable = false)
     private String password;
 
+    @Column (columnDefinition = "number default '1'",
+            nullable = false)
+    private boolean enabled;                    // 1 or 0
+
+    @Column(columnDefinition = "varchar2(30) default 'ROLE_USER'",
+            nullable = false)
+    private String role;
+
     @Builder
-    private Member (String email, String password) {
+    private Member (String email, String password, boolean enabled, String role) {
         this.email = email;
         this.password = password;
+        this.enabled = enabled;
+        this.role = role;
     }
 
     @Override
@@ -57,8 +65,14 @@ public class Member implements UserDetails {
         return true;
     }
 
+    /**
+     * enabled
+     * 0 : false 비활성화
+     * 1 : true 활성화
+     * @return true/false
+     */
     @Override
     public boolean isEnabled() {
-        return true;
+        return this.enabled;
     }
 }

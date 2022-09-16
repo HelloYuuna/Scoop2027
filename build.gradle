@@ -30,7 +30,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	annotationProcessor(group: 'org.projectlombok',name: 'lombok')
+//	annotationProcessor(group: 'org.projectlombok',name: 'lombok')
 	// runtimeOnly('com.h2database:h2')
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 

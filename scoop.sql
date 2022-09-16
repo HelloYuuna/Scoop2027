@@ -21,3 +21,13 @@ COMMENT ON COLUMN scoop_member.password IS '폼가입비밀번호';
 COMMENT ON COLUMN scoop_member.picture IS '프로필사진';
 
 select * from scoop_member;
+
+DROP TABLE MEMBER;
+CREATE TABLE member(
+  email varchar2(320) primary key ,
+  password varchar(50) not null ,
+  enabled number default 1 not null
+);
+
+select * from member;
+

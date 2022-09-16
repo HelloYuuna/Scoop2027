@@ -35,12 +35,12 @@ public class HomeController {
 		model.addAttribute("dayOfMonth", dayOfMonth);
 		model.addAttribute("dayOfWeek", dayOfWeek);
 		
-		SessionUser user = (SessionUser) httpSession.getAttribute("user");
-		log.debug("User: {}", user);
-		
-		if(user != null) {
-			model.addAttribute("userName", user.getName());
-		}
+//		SessionUser user = (SessionUser) httpSession.getAttribute("user");
+//		log.debug("User: {}", user);
+//
+//		if(user != null) {
+//			model.addAttribute("userName", user.getName());
+//		}
 		return "scoophome";
 	}
 	
