@@ -12,6 +12,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import com.example.scoop.config.auth.dto.SessionUser;
 
+/**
+ * 일반 폼 회원가입 관리용 도메인
+ */
 @Slf4j
 @RequiredArgsConstructor
 @Controller

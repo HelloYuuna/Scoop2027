@@ -8,23 +8,31 @@
     <link rel="stylesheet" th:href="@{/css/loginCss/signup.css}">
 </head>
 <body>
+<!--/*
+* 로그인 유효성 체크 submit버튼으로 해결*
+* 아이디 & 비밀번호 required 속성부여
+* 아이디 이메일 형식 확인
+* 비밀번호 형식 확인
+* 비밀번호는 8~ 10자리
+*/-->
 <div class="content">
     <div class="left-image"></div>
     <div id="sign-up-form">
         <h2 id="sign-up-title">회원가입</h2>
-        <form th:object="${user}" id="signupForm" th:action="@{/}" method="post" onsubmit="return loginChk();">
+        <div><span id="idchk-msg"></span></div>
+        <form th:object="${member}" id="signupForm" th:action="@{/}" method="post" onsubmit="return submitFalse();">
             <div class="userid">
                 <label>
-                    <input type="email" th:field="*{email}" placeholder="이메일" required="required">
+                    <input type="email" th:field="*{email}" placeholder="email" required="required">
                 </label>
             </div>
             <div class="userpw">
                 <label>
-                    <input type="password" th:field="*{password}" placeholder="비밀번호" minlength="8" maxlength="10" required="required">
+                    <input type="password" th:field="*{password}" placeholder="password" minlength="8" maxlength="10" required="required">
                 </label>
             </div>
             <div class="btn_submit">
-                <input type="submit" value="sign up">
+                <input type="submit" id="submit-btn" value="sign up">
             </div>
         </form>
         <div><a th:href="@{/}">뒤로가기</a></div>

@@ -1,21 +1,28 @@
 package com.example.scoop.controller;
 
-import com.example.scoop.domain.Member;
+import com.example.scoop.repository.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@Slf4j
-@RequestMapping("/member")
 @ResponseBody
+@RequestMapping("/member")
+@Slf4j
 public class MemberRestController {
 
-    @PostMapping("/idChk")
-    public void idChk(Member member) {
-        log.debug("까꿍");
-        log.debug("ajax에서 넘어온 Form값: {}", member);
-    }
+    @Autowired
+    private MemberRepository repository;
+
+//    @PostMapping("/idcheck")
+//    public boolean idChk(String email) {
+//        System.out.println(email);
+////        log.info("email: {}", email);
+//
+//        Optional<Member> member = repository.findById(email);
+//
+//        return member.isPresent();
+//    }
 }

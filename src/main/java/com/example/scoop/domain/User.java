@@ -9,14 +9,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 
+/**
+ * Oauth 인증용 도메인
+ * 구글 API저장용
+ */
 @Getter
 @NoArgsConstructor
 @Entity
 @Table(name="scoop_member")
-public class User implements UserDetails {
+public class User {
 
 	@Id
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String email;				// 회원 아이디 이메일
 	
 	@Column
@@ -64,55 +68,5 @@ public class User implements UserDetails {
 		return this.role.getKey();
 	}
 
-	/////// UserDetails 구현 : 현재 로그인한 아이디 비밀번호를 세션에서 받아옴 /////////
-
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
-	}
-
-	/**
-	 * 세션에 로그인한 유저 아이디
-	 * @return email 아이디
-	 */
-	@Override
-	public String getUsername() {
-		return this.email;
-	}
-
-	/**
-	 * 세션에 로그인한 유저 비번
-	 * @return 비밀번호 (인코딩필요)
-	 */
-	@Override
-	public String getPassword() {
-		return this.password;
-	}
-
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
-
-	/**
-	 * enabled
-	 * 0 : false 비활성화
-	 * 1 : true 활성화
-	 * @return true/false
-	 */
-	@Override
-	public boolean isEnabled() {
-		return true;							// 아이디 활성화
-	}
 }
 

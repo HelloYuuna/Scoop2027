@@ -37,6 +37,7 @@ public class SecurityConfig {
 	               .and()
                    .authorizeRequests()
                    .antMatchers("/member/signupForm",
+						   "member/idcheck",
 						   "/css/**",
 						   "/img/**",
                            "/js/**").permitAll()
