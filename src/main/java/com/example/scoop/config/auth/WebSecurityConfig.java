@@ -62,12 +62,12 @@ public class WebSecurityConfig {
                 .dataSource(dataSource)
                 /*
                  * 인증 (로그인) : 유저정보를 DB에서 시큐리티가 자동 검색
-                 * 유저를 유일하게 구분하는 값 memberid
+                 * 유저를 유일하게 구분하는 값 email(아이디)
                  * enabled 비활성화 계정인지 아닌지 확인
                  */
                 .usersByUsernameQuery(
                         "select email, password, enabled " +
-                                "from member " +
+                                "from scoop_member " +
                                 "where email = ?")
                 /*
                  * 권한 체크
@@ -75,7 +75,7 @@ public class WebSecurityConfig {
                  */
                 .authoritiesByUsernameQuery(
                         "select email, role " +
-                                "from member " +
+                                "from scoop_member " +
                                 "where email = ?");
     }
 

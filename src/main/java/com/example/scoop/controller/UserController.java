@@ -1,13 +1,11 @@
 package com.example.scoop.controller;
 
-import com.example.scoop.domain.Member;
+import com.example.scoop.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * projectName     :Scoop
@@ -19,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Slf4j
 @Controller
 @RequestMapping("/member")
-public class MemberController {
+public class UserController {
 
     /**
      * 로그인 폼으로 이동
@@ -38,7 +36,7 @@ public class MemberController {
     @GetMapping("/signupForm")
     public String gotoSignup(Model model) {
 
-        model.addAttribute("member", new Member());
+        model.addAttribute("user", new User());
         return "/loginView/signupForm";
     }
 

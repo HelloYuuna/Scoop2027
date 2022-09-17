@@ -1,9 +1,8 @@
 package com.example.scoop.controller;
 
-import com.example.scoop.domain.Member;
-import com.example.scoop.domain.MemberDTO;
-import com.example.scoop.repository.MemberRepository;
-import com.example.scoop.service.MemberService;
+import com.example.scoop.domain.User;
+import com.example.scoop.domain.UserDTO;
+import com.example.scoop.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,19 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Optional;
-
 @Controller
 @ResponseBody
 @RequestMapping("/member")
 @Slf4j
-public class MemberRestController {
+public class UserRestController {
 
     @Autowired
-    private MemberRepository repository;
-
-    @Autowired
-    private MemberService service;
+    private UserService userService;
 
     /**
      * 아이디 중복체크
@@ -34,20 +28,20 @@ public class MemberRestController {
     public boolean idChk(String email) {
         log.info("email: {}", email);
 
-        return service.findById(email);
+        return userService.findById(email);
     }
 
     /**
      * 회원가입
-     * @param member 회원가입폼에서 넘어온 아이디 비밀번호값
+     * @param user 회원가입폼에서 넘어온 아이디 비밀번호값
      */
     @PostMapping("/signup")
-    public boolean signup(MemberDTO member) {
-        log.info("member: {}", member);
+    public boolean signup(UserDTO user) {
+        log.info("user: {}", user);
 
-        Member newMember = service.insertMember(member);
-        log.info("save반환값: {}", newMember);
+        User newUser = userService.insertMember(user);
+        log.info("save반환값: {}", newUser);
 
-        return newMember == null;
+        return newUser == null;
     }
 }

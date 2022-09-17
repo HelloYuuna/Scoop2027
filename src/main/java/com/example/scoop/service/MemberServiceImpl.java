@@ -31,10 +31,14 @@ public class MemberServiceImpl implements MemberService {
         // 데이터베이스의 데이터 보호를 위하여 DTO객체로 우회하여 저장
         Member persistentMember = new Member();
         persistentMember.setEmail(member.getEmail());
-        
+
         // 비밀번호 인코딩
+        log.info("인코딩전: {}", member.getPassword());
         String encodedPW = passwordEncoder.encode(member.getPassword());
         persistentMember.setPassword(encodedPW);
+        log.info("인코딩후: {}", encodedPW);
+
+
 
         return repository.save(persistentMember);
     }
