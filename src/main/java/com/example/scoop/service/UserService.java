@@ -5,7 +5,7 @@ import com.example.scoop.domain.UserDTO;
 
 public interface UserService {
 
-    boolean findById(String email);
+    User findById(String email);
 
-    User insertMember(UserDTO user);
+    int insertMember(UserDTO user);
 }

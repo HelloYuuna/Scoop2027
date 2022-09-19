@@ -27,8 +27,8 @@ public class UserRestController {
     @PostMapping("/idcheck")
     public boolean idChk(String email) {
         log.info("email: {}", email);
-
-        return userService.findById(email);
+        User user = userService.findById(email);
+        return user == null;
     }
 
     /**
@@ -36,12 +36,9 @@ public class UserRestController {
      * @param user 회원가입폼에서 넘어온 아이디 비밀번호값
      */
     @PostMapping("/signup")
-    public boolean signup(UserDTO user) {
+    public int signup(UserDTO user) {
         log.info("user: {}", user);
 
-        User newUser = userService.insertMember(user);
-        log.info("save반환값: {}", newUser);
-
-        return newUser == null;
+        return userService.insertMember(user);
     }
 }

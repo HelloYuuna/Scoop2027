@@ -4,6 +4,11 @@ import java.time.LocalDate;
 
 import javax.servlet.http.HttpSession;
 
+import com.example.scoop.domain.User;
+import com.example.scoop.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,9 +26,12 @@ import com.example.scoop.config.auth.dto.SessionUser;
 public class HomeController {
 	
 	private final HttpSession httpSession;
+
+	@Autowired
+	private UserService userService;
 	
 	@GetMapping({"","/"})
-	public String scoophome(Model model) {
+	public String scoophome(Model model, @AuthenticationPrincipal UserDetails loginInfo) {
 		
 		LocalDate now = LocalDate.now();
 		
@@ -34,13 +42,30 @@ public class HomeController {
 		model.addAttribute("month", monthValue);
 		model.addAttribute("dayOfMonth", dayOfMonth);
 		model.addAttribute("dayOfWeek", dayOfWeek);
-		
+
+		/*
+		 * 구글 로그인 정보 받아오기
+		 */
 		SessionUser user = (SessionUser) httpSession.getAttribute("user");
 		log.debug("User: {}", user);
-//
-//		if(user != null) {
-//			model.addAttribute("userName", user.getName());
-//		}
+
+		if(user != null) {
+			model.addAttribute("userName", user.getName());
+		} else {
+
+			/*
+			 * 폼 로그인 정보 받아오기
+			 */
+			String loginId = loginInfo.getUsername();
+			User formLoginUser = userService.findById(loginId);
+			String userName = formLoginUser.getName();
+
+			log.info("폼로그인정보: {}", userName);
+
+			model.addAttribute("userName",userName);
+		}
+
+
 		return "scoophome";
 	}
 	

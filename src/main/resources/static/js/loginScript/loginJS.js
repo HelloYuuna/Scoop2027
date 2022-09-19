@@ -19,7 +19,7 @@
                 console.log(result);
 
                 // true: 아이디존재 -> 중복
-                if(result) {
+                if(!result) {
                     $('#idchk-msg').html('해당 아이디는 이미 존재합니다.')
                         .select();
                 } else {
@@ -47,10 +47,10 @@
             success: function(result) {
                 console.log(result);
 
-                if(!result) {
-                    let gotoLoginPage = 'loginForm';
+                if(result >= 1) {
+                    let gotoLoginPage = '/';
                     alert('회원가입이 완료되었습니다.');
-                    location.href='gotoLoginPage';
+                    location.href=gotoLoginPage;
                 }
 
             } ,

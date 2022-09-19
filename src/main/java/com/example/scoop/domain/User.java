@@ -1,8 +1,6 @@
 package com.example.scoop.domain;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,7 +11,8 @@ import java.util.Collection;
  * Oauth 인증용 도메인
  * 구글 API저장용
  */
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Builder
 @Entity
@@ -34,7 +33,7 @@ public class User implements UserDetails {
 	private String picture;				// 구글에서 받은 프로필사진
 
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
+	@Column
 	private Role role;
 
 	@Column
