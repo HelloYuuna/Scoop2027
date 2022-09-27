@@ -51,8 +51,8 @@ public class HomeController {
 
 		if(user != null) {
 			model.addAttribute("userName", user.getName());
-		} else {
 
+		} else {
 			/*
 			 * 폼 로그인 정보 받아오기
 			 */

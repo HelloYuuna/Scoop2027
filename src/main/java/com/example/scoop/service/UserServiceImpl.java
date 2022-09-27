@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class UserServiceImpl implements UserService {
@@ -50,5 +52,11 @@ public class UserServiceImpl implements UserService {
 
         return userDAO.insertUser(persistentUser);
     }
+
+    @Override
+    public List<User> findByWsid(int wsid) {
+        return userDAO.findByWsid(wsid);
+    }
+
 
 }

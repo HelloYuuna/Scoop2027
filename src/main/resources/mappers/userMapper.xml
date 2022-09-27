@@ -12,4 +12,9 @@
         insert into SCOOP_MEMBER (EMAIL, ENABLED, NAME, PASSWORD, PICTURE, ROLE, UDEPT, WSID)
         VALUES (#{email}, default, #{name}, #{password}, null, #{role}, null, null)
     </insert>
+
+    <select id="findByWsid" parameterType="int" resultType="User">
+        select * from SCOOP_MEMBER
+        where WSID = #{wsid}
+    </select>
 </mapper>

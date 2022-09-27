@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
+ * 로그인 및 회원가입 컨트롤러
  * projectName     :Scoop
  * fileName        :MemberController
  * author          :yuuna

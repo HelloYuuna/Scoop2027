@@ -19,7 +19,14 @@ public class UserRestController {
     @Autowired
     private UserService userService;
 
+//    private final UserService userService;
+//
+//    public UserRestController(UserService userService) {
+//        this.userService = userService;
+//    }
+
     /**
+     * 회원가입 폼 처리 에이젝스 컨트롤러
      * 아이디 중복체크
      * @param email 회원가입폼에서 받아온 아이디
      * @return boolean 중복아이디가 존재하는지 반환
